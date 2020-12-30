@@ -1,0 +1,32 @@
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue"></script>
+    <script type="text/javascript" src="names.json"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>Total amount of all {{info.names.length}} names: {{countAll()}}</p>
+        <div class="list">
+        <button v-on:click="byAlphabet">Alphabet</button>
+        <button v-on:click="byAmount">Amount</button>     
+        <p v-for="(person) in info.names">
+            {{person.name}} {{person.amount}}
+        </p>
+        </div>
+        <div class="list">
+            <select v-model="persons">
+                <option v-for="(person) in info.names" :value="person.name">{{person.name}}</option>
+            </select>
+            <span v-for="(person) in info.names" v-if="person.name==persons">
+                Amount: {{person.amount}}
+            </span>
+        </div>
+    </div>
+</body>
+
+
+<script type="text/javascript" src="script.js"></script>
+
+</html>
